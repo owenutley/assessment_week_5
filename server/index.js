@@ -11,7 +11,7 @@ app.use(express.json()); // When we want to be able to accept JSON.
 app.get("/api/compliment", (req, res) => {
   const compliments = ["Your help makes someone else's day!",
 					 "You make others smile!",
-					 "Once you start, you always will finish!",
+					 "Once you start, you can always finish!",
   ];
 
   // choose random compliment
@@ -57,7 +57,36 @@ app.get("/api/tasks", (req, res) => {
   
 });
 
+app.get("/api/books", (req, res) => {
+  const books = [
+    "The Biology Of Belief",
+		"Psycho Cybernetics",
+		"The 7 Habits Of Highly Effective People",
+    "Inward",
+    "Atomic Habits",
+    "Brightline Eating",
+    "Make Your Bed (this is also the title to a book)"
+  ];
+
+  let randomIndex = Math.floor(Math.random() * books.length);
+  let randombook = books[randomIndex];
+
+  res.status(200).send(randombook);
+  
+});
+
+app.get("/api/how", (req, res) => {
+  const books = [
+    "You have now likely read through many of the pieces of information. Start by trying a few things that have been shared, don't overwhelm yourself!"
+  ];
+
+  res.status(200).send(books);
+  
+});
+
 
 // app.post(`/api/entry`, entry)
 
-app.listen(4000, () => console.log("Server running on 4000"));
+const port = 4545
+
+app.listen(port, () => console.log(`Server running on ${port}`));
